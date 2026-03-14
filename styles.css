@@ -1,0 +1,272 @@
+:root {
+    --stone-100: hsl(30, 54%, 90%);
+    --stone-150: hsl(30, 18%, 87%);
+    --stone-600: hsl(30, 10%, 34%);
+    --stone-900: hsl(24, 5%, 18%);
+    --brown-800: hsl(14, 45%, 36%);
+    --rose-800: hsl(332, 51%, 32%);
+    --rose-50: hsl(330, 100%, 98%);
+    --white: hsl(0, 0%, 100%);
+}
+
+.text-preset-1 {
+  font-family: "Young Serif", serif;
+  font-size: 40px;
+  font-weight: 400; /* Regular */
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.text-preset-2 {
+  font-family: "Young Serif", serif;
+  font-size: 28px;
+  font-weight: 400; /* Regular */
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+.text-preset-3 {
+  font-family: "Outfit", serif;
+  font-size: 20px;
+  font-weight: 600; /* Semi Bold */
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+.text-preset-4 {
+  font-family: "Outfit", serif;
+  font-size: 16px;
+  font-weight: 400; /* Regular */
+  line-height: 150%;
+  letter-spacing: 0px;
+}
+
+.text-preset-4-bold-brown {
+  font-family: "Outfit", serif;
+  font-size: 16px;
+  font-weight: 800; /* Extra Bold */
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: var(--brown-800);
+}
+
+.text-preset-4-bold-stone-600 {
+  font-family: "Outfit", serif;
+  font-size: 16px;
+  font-weight: 800; /* Extra Bold */
+  line-height: 150%;
+  letter-spacing: 0px;
+  color: var(--stone-600);
+}
+
+.rose {
+    color: var(--rose-800);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+body {
+    background-color: hsl(30, 54%, 90%);
+    font-size: 16px;
+    font-family: "Outfit", serif;
+}
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 128px 48px;
+}
+
+.figtree-serif {
+    font-family: "Figtree", sans-serif;;
+}
+
+.outfit-serif {
+    font-family: "Outfit", sans-serif;;
+}
+
+.brown {
+    color: var(--brown-800);
+}
+
+.recipe-card {
+    width: 736px;
+    padding: 40px;
+    border-radius: 24px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.recipe-card > img {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    aspect-ratio: 1312 / 600;
+    object-fit: cover;
+    transition: width 0.3s ease;
+}
+
+.recipe-title {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+}
+
+
+ul {
+    list-style: none; /* remove default bullets */
+    padding-left: 0; /* remove default padding */
+}
+
+ul li {
+    display: flex; /* make each list item a flex container */
+    align-items: center; /* vertically center the bullet and text */
+    margin-bottom: 8px; /* space between list items */
+    padding-left: 8px; /* space for the bullet */
+    gap: 16px; /* space between bullet and text */
+}
+
+ul li::before {
+    content: "•"; /* add a bullet point */
+    color: var(--brown-800); /* set bullet color */
+    font-size: 16px; /* set bullet size */
+    width: 16px; /* fixed width for the bullet */
+    flex-shrink: 0; /* prevent bullet from shrinking */
+}
+
+.preparation-time {
+    background-color: var(--rose-50);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+}
+
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+}
+
+.instructions ol {
+  list-style: none; /* remove default numbers */
+  counter-reset: item; /* start custom counter */
+  padding-left: 0;
+}
+
+.instructions ol li {
+  display: flex;              /* put number + text in a row */
+  align-items: flex-start;    /* align nicely at the top */
+  margin-bottom: 8px;         /* spacing between items */
+  counter-increment: item;    /* increment counter */
+  padding-left: 8px;            /* space for the number */
+}
+
+.instructions ol li::before {
+    color: var(--brown-800);
+    font-family: "Outfit", serif;
+    font-size: 16px;
+    font-weight: 800; /* Extra Bold */
+    line-height: 150%;
+    letter-spacing: 0px;
+    content: counter(item) ".";  /* generate number */
+    margin-right: 16px;         /* space between number and text */
+    min-width: 24px;            /* keeps numbers aligned */
+}
+
+
+.nutrition {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-spacing: 12px 0; /* add spacing between rows */
+}
+
+th {
+    font-weight: 400; /* Regular */
+}
+
+th, td {
+  padding: 12px 32px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+/* Remove border from the last row */
+tr:last-child th,
+tr:last-child td {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Remove top padding from the first row */
+tr:first-child th,
+tr:first-child td {
+  padding-top: 0;
+}
+
+
+@media (max-width: 736px) {
+    .recipe-card {
+        width: 616px;
+    }
+}
+
+@media (max-width: 375px) {
+    .text-preset-1 {
+        font-family: "Young Serif", serif;
+        font-size: 36px;
+        font-weight: 400; /* Regular */
+        line-height: 100%;
+        letter-spacing: 0px;
+    }
+    main {
+        padding: 0;
+    }
+    .recipe-card {
+        width: 100%;
+        padding: 0;
+        border-radius: 0;
+        gap: 0;
+    }
+    .recipe-card > img {
+        height: 171px;
+        width: 100%;
+        border-radius: 0;
+    }
+    .recipe-content {
+        padding: 40px 32px;
+    }
+}
