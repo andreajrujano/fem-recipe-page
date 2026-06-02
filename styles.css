@@ -9,13 +9,13 @@
     --white: hsl(0, 0%, 100%);
 
     /* Spacing scale — base 4px unit (Tailwind-aligned) */
-    --space-1: 4px;   /* tight nudges */
-    --space-2: 8px;   /* icon gaps, small padding */
-    --space-3: 12px;  /* compact gaps */
-    --space-4: 16px;  /* default spacing */
-    --space-5: 20px;  /* border-radius of card image */
-    --space-6: 24px;  /* card padding, content gaps */
-    --space-8: 32px;  /* section separation */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
 }
 
 /* ================================ START RESET STYLES ========================== */
@@ -72,30 +72,38 @@ body {
     line-height: 150%;
     color: var(--brown-800);
 }
+
+/*
+  Fluid scaling: all clamp values anchor to:
+  min at 375px viewport → max at 765px viewport
+  Formula: clamp(min, slope * 100vw + intercept, max)
+*/
+
 main {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 128px 48px;
+    padding-top: clamp(0px, 32.57vw - 122.14px, 128px);
+    padding-bottom: clamp(0px, 32.57vw - 122.14px, 128px);
 }
 
 .recipe-card {
-    max-width: 736px;
     width: 100%;
-    padding: calc(var(--space-5) * 2);
-    border-radius: var(--space-6);
+    max-width: clamp(375px, 61.32vw + 145.04px, 616px);
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: calc(var(--space-5) * 2);
+    padding: clamp(0px, 10.18vw - 38.17px, 40px);
+    gap: clamp(0px, 10.18vw - 38.17px, 40px);
+    border-radius: clamp(0px, 6.11vw - 22.90px, 24px);
 }
 
 
-.recipe-card__img {
-        /*height: 300px;*/
-        border-radius: var(--space-3);
-        aspect-ratio: 1312 / 600;
-        object-fit: cover;
+.recipe-card__img  {
+    height: clamp(171px, 32.82vw + 47.91px, 300px);
+    width: 100%;
+    border-radius: clamp(0px, 3.05vw - 11.45px, 12px);
+    object-fit: cover;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -108,10 +116,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
+    padding-block: clamp(0px, -10.18vw + 78.17px, 40px);
+    padding-inline: clamp(0px, -8.14vw + 62.53px, 32px);
 }
 
 .recipe-card__title {
-    font-size: calc(var(--space-5) * 2);
+    font-family: "Young Serif", serif;
+    font-size: 3.6rem;
     font-weight: 400; /* Regular */
     line-height: 100%;
     letter-spacing: 0;
@@ -125,10 +136,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
+    border-radius: var(--space-3);
 }
 
 .preparation-time h2 {
-    font-size: var(--space-5);
+    font-size: 2rem;
     font-weight: 600; /* Semi Bold */
     line-height: 100%;
     letter-spacing: 0;
@@ -148,6 +160,10 @@ main {
     flex-direction: column;
     gap: var(--space-4);
     padding: 0;
+}
+
+.nutrition th {
+    font-weight: 400;
 }
 
 
@@ -202,7 +218,6 @@ main {
 .nutrition table {
   border-collapse: collapse;
   width: 100%;
-  /*border-spacing: 12px 0; !* add spacing between rows *!*/
 }
 
 .table-caption {
@@ -227,36 +242,14 @@ main {
     padding-top: 0;
 }
 
-/* ========================== MEDIA QUERIES ===========================================*/
-/*@media (max-width: 736px) {*/
-/*    .recipe-card {*/
-/*        width: 616px;*/
-/*    }*/
-/*}*/
 
-/*@media (max-width: 375px) {*/
-/*    .text-preset-1 {*/
-/*        font-family: "Young Serif", serif;*/
-/*        font-size: 36px;*/
-/*        font-weight: 400; !* Regular *!*/
-/*        line-height: 100%;*/
-/*        letter-spacing: 0;*/
-/*    }*/
-/*    main {*/
-/*        padding: 0;*/
-/*    }*/
-/*    .recipe-card {*/
-/*        width: 100%;*/
-/*        padding: 0;*/
-/*        border-radius: 0;*/
-/*        gap: 0;*/
-/*    }*/
-/*    .recipe-card > img {*/
-/*        height: 171px;*/
-/*        width: 100%;*/
-/*        border-radius: 0;*/
-/*    }*/
-/*    .recipe-content {*/
-/*        padding: 40px 32px;*/
-/*    }*/
-/*}*/
+/* ============================  MEDIA QUERIES =========================== */
+@media (min-width: 768px) {
+    .recipe-card {
+        max-width: clamp(616px, 27.78vw + 402.67px, 736px);
+    }
+
+    .recipe-card__title {
+        font-size: 4rem;
+    }
+}
